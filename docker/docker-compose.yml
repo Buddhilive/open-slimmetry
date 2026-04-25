@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  slimmetry:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../data:/app/data
+    environment:
+      - DB_PATH=/app/data/slimmetry.db
+      - RETENTION_DAYS=7
+      - MAX_DB_MB=500
+    restart: unless-stopped
