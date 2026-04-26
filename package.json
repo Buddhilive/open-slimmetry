@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:client": "pnpm --filter @slimmetry/next build"
   },
   "dependencies": {
     "better-sqlite3": "^12.9.0",

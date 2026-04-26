@@ -1,0 +1,17 @@
+{
+  "name": "@slimmetry/next",
+  "version": "0.1.0",
+  "description": "Lightweight logging client for Open Slimmetry",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

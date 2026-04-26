@@ -44,3 +44,7 @@ next-env.d.ts
 /data/*.db
 /data/*.db-wal
 /data/*.db-shm
+
+# Client library build output
+/packages/slimmetry-client/dist
+/packages/slimmetry-client/node_modules
