@@ -1,0 +1,20 @@
+.git
+.next
+node_modules
+packages/slimmetry-client/node_modules
+packages/slimmetry-client/dist
+
+# SQLite database — mounted as a volume at runtime
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# Local env overrides — never bake secrets into the image
+.env
+.env.local
+.env*.local
+
+# Docker artefacts — no need to COPY these into the image
+Dockerfile
+docker/
+.dockerignore
