@@ -1,13 +1,13 @@
-# @slimmetry/next
+# slimmetry-next
 
-Lightweight logging client for [Open Slimmetry](https://github.com/your-org/open-slimmetry) — a self-hosted observability server for Next.js beta apps.
+Lightweight logging client for [Open Slimmetry](https://github.com/buddhilive/open-slimmetry) — a self-hosted observability server for Next.js beta apps.
 
 ## Installation
 
 ```bash
-npm install @slimmetry/next
+npm install slimmetry-next
 # or
-pnpm add @slimmetry/next
+pnpm add slimmetry-next
 ```
 
 ## Setup
@@ -16,7 +16,7 @@ Create a shared logger instance (do this once, then import it throughout your ap
 
 ```ts
 // lib/logger.ts
-import { createSlimmetry } from '@slimmetry/next'
+import { createSlimmetry } from 'slimmetry-next'
 
 export const logger = createSlimmetry({
   baseUrl: process.env.NEXT_PUBLIC_SLIMMETRY_URL!,

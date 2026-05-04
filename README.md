@@ -4,7 +4,7 @@ Self-hosted observability for Next.js beta apps. Collects structured log events 
 
 ```
 your Next.js app  ──POST /api/ingest──▶  Slimmetry server  ──▶  SQLite  ──▶  Dashboard
-(@slimmetry/next)                        (this repo)
+(slimmetry-next)                         (this repo)
 ```
 
 ---
@@ -17,7 +17,7 @@ your Next.js app  ──POST /api/ingest──▶  Slimmetry server  ──▶  
 - [Server — configuration](#server--configuration)
 - [Ingest API](#ingest-api)
 - [Dashboard](#dashboard)
-- [Client library — `@slimmetry/next`](#client-library--slimmetrynext)
+- [Client library — `slimmetry-next`](#client-library--slimmetry-next)
 - [Monorepo structure](#monorepo-structure)
 
 ---
@@ -27,7 +27,7 @@ your Next.js app  ──POST /api/ingest──▶  Slimmetry server  ──▶  
 | Part | What it is |
 |---|---|
 | **Slimmetry server** | Next.js 16 app — serves the dashboard and the `/api/ingest` POST endpoint. Stores events in a local SQLite file via `better-sqlite3`. |
-| **`@slimmetry/next`** | Zero-dependency TypeScript client library. Wraps `fetch` — drop it into any Next.js (or Node 18+) app and call `logger.send()`. |
+| **`slimmetry-next`** | Zero-dependency TypeScript client library. Wraps `fetch` — drop it into any Next.js (or Node 18+) app and call `logger.send()`. |
 
 The server runs as a single process. SQLite runs in WAL mode and is accessed through a singleton connection. An hourly cron job prunes rows older than `RETENTION_DAYS`.
 
@@ -175,7 +175,7 @@ Navigate to `http://localhost:3000/dashboard`.
 
 ---
 
-## Client library — `@slimmetry/next`
+## Client library — `slimmetry-next`
 
 A lightweight TypeScript logger that POSTs events to your Slimmetry server. Zero runtime dependencies. Uses native `fetch` (available in Next.js 13+ and Node 18+). Never throws — network failures are silently swallowed.
 
@@ -185,7 +185,7 @@ The package lives in this monorepo at `packages/slimmetry-client`. To use it in 
 
 ```bash
 # From npm (once published)
-pnpm add @slimmetry/next
+pnpm add slimmetry-next
 
 # Or from the local monorepo during development
 pnpm add ../path/to/open-slimmetry/packages/slimmetry-client
@@ -197,7 +197,7 @@ Create a shared logger instance once and export it:
 
 ```ts
 // lib/logger.ts
-import { createSlimmetry } from '@slimmetry/next'
+import { createSlimmetry } from 'slimmetry-next'
 
 export const logger = createSlimmetry({
   baseUrl: process.env.NEXT_PUBLIC_SLIMMETRY_URL!, // e.g. "http://localhost:3000"
@@ -309,7 +309,7 @@ open-slimmetry/
 │       ├── queries.ts              # getLogs(), getStats(), getDistinctValues()
 │       └── retention.ts            # Hourly cron — prunes old rows
 ├── packages/
-│   └── slimmetry-client/           # @slimmetry/next client library
+│   └── slimmetry-client/           # slimmetry-next client library
 │       └── src/index.ts
 ├── docker/
 │   └── docker-compose.yml

@@ -1,15 +1,54 @@
 {
-  "name": "@slimmetry/next",
-  "version": "0.1.0",
-  "description": "Lightweight logging client for Open Slimmetry",
+  "name": "slimmetry-next",
+  "version": "0.1.0-beta.1",
+  "description": "Lightweight log-shipping client for Open Slimmetry — self-hosted observability for Next.js apps",
+  "keywords": [
+    "logging",
+    "observability",
+    "nextjs",
+    "next.js",
+    "slimmetry",
+    "monitoring",
+    "telemetry",
+    "self-hosted"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buddhilive/open-slimmetry.git",
+    "directory": "packages/slimmetry-client"
+  },
+  "homepage": "https://github.com/buddhilive/open-slimmetry#client-library--slimmetry-next",
+  "bugs": {
+    "url": "https://github.com/buddhilive/open-slimmetry/issues"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run typecheck && pnpm run build",
+    "publish:dry-run": "pnpm publish --tag beta --dry-run --no-git-checks",
+    "publish:beta": "pnpm publish --tag beta --no-git-checks",
+    "publish:latest": "pnpm publish --tag latest --no-git-checks"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "typescript": "^5"

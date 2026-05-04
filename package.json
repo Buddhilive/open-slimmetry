@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "build:client": "pnpm --filter @slimmetry/next build"
+    "build:client": "pnpm --filter slimmetry-next build",
+    "publish:beta": "pnpm --filter slimmetry-next run publish:beta",
+    "publish:latest": "pnpm --filter slimmetry-next run publish:latest",
+    "publish:dry-run": "pnpm --filter slimmetry-next run publish:dry-run"
   },
   "dependencies": {
     "better-sqlite3": "^12.9.0",
